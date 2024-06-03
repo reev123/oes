@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base href="./">
+    <!-- Head content from your original registration.html -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Page</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: linear-gradient(45deg, #3498db, #8e44ad);
+            overflow: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .registration-container {
+            position: relative;
+            width: 350px; /* Adjusted size */
+            padding: 20px; /* Adjusted padding */
+            border-radius: 8px;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .logo {
+            position: absolute;
+            top: 7px;
+            left: 15px;
+            width: 90px; /* Adjusted size */
+            height: auto;
+            user-select: none;
+        }
+
+        h2 {
+            margin-top: 10px; /* Adjusted margin */
+            color: #3498db;
+        }
+
+        .registration-form label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .registration-form input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px; /* Adjusted margin */
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .registration-form button {
+            width: 100%;
+            padding: 12px;
+            background: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s ease-in-out;
+        }
+
+        .registration-form button:hover {
+            background: #2980b9; /* Hover background color */
+        }
+
+        .login-link {
+            margin-top: 10px; /* Adjusted margin */
+            color: #3498db; /* Button color */
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+            transition: color 0.3s ease-in-out;
+            display: inline-block; /* Display on a single line */
+        }
+
+        .login-link:hover {
+            color: #a93226; /* Maroon color on hover */
+        }
+
+        .account-statement {
+            margin-top: 10px; /* Adjusted margin */
+            font-weight: 600; /* Adjusted boldness */
+            color: #3498db; /* Button color */
+        }
+
+        .back-button {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            text-decoration: none;
+            color: #fff; /* Change to white */
+            font-size: 20px;
+            font-weight: bold;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .back-button:hover {
+            color: #a93226; /* Maroon color on hover */
+        }
+        .registration-container {
+        width: 90%;
+        max-width: 350px;
+        padding: 24px; /* Adjusted padding */
+        border-radius: 8px;
+        background: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    .registration-container input,
+    .registration-container button {
+        padding: 6px; /* Further reduced padding */
+        margin-bottom: 6px; /* Further reduced margin */
+        font-size: 12px; /* Further reduced font size */
+    }
+    </style>
+</head>
+<body>
+    <a href="homepage.php" class="back-button">&#8592; Back</a>
+    <div class="registration-container">
+        <!-- In index.html, login.html, registration.html -->
+        <img src="OES.png" alt="Logo" class="logo" id="logo">
+
+        <h2>Registration</h2>
+        <form class="registration-form" action="register.php" method="post" onsubmit="return validateForm()">
+            <label for="id">ID</label>
+            <input type="text" id="id" name="id" required autocomplete="off" readonly onfocus="this.removeAttribute('readonly');">
+
+            <label for="full_name">Full Name</label>
+            <input type="text" id="full_name" name="full_name" required autocomplete="off" readonly onfocus="this.removeAttribute('readonly');">
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required autocomplete="off" readonly onfocus="this.removeAttribute('readonly');">
+
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required autocomplete="off" readonly onfocus="this.removeAttribute('readonly');">
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required autocomplete="off" readonly onfocus="this.removeAttribute('readonly');">
+
+            <label for="confirm_password">Confirm Password:</label><br>
+            <input type="password" id="confirm_password" name="confirm_password" required autocomplete="off" readonly onfocus="this.removeAttribute('readonly');"><br><br>            
+
+            <button type="submit">Register</button>
+        </form>
+        <p class="account-statement">Already have an account? <a href="login.html" class="login-link">Login here.</a></p>
+    </div>
+
+    <script>
+        function validateForm() {
+            var fullName = document.getElementById('full_name').value;
+            var email = document.getElementById('email').value;
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+            var confirmPassword = document.getElementById('confirm_password').value;
+
+            if (fullName === "" || email === "" || username === "" || password === "" || confirmPassword === "") {
+                alert("Please fill all the fields");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</body>
+</html>

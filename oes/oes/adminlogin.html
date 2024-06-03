@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base href="./">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: linear-gradient(45deg, #3498db, #8e44ad);
+            overflow: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .login-container {
+            position: relative;
+            width: 300px;
+            padding: 30px;
+            border-radius: 8px;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .logo {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            width: 90px;
+            height: auto;
+            user-select: none;
+        }
+
+        h2 {
+            margin-top: 10px;
+            color: #3498db;
+        }
+
+        .login-form label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .login-form input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .login-form button {
+            width: 100%;
+            padding: 12px;
+            background: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s ease-in-out;
+        }
+
+        .login-form button:hover {
+            background: #2980b9;
+        }
+
+        .registration-link {
+            margin-top: 20px;
+            color: #3498db;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .registration-link:hover {
+            color: #a93226;
+        }
+
+        .account-statement {
+            margin-top: 20px;
+            font-weight: 600;
+            color: #3498db;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            text-decoration: none;
+            color: #fff;
+            font-size: 20px;
+            font-weight: bold;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .back-button:hover {
+            color: #a93226;
+        }
+    </style>
+</head>
+<body>
+    <a href="homepage.php" class="back-button">&#8592; Back</a>
+    <div class="login-container">
+        <img src="OES.png" alt="Logo" class="logo" id="logo">
+        <h2>Admin Login</h2>
+        <form class="login-form" action="adminlogin.php" method="post">
+            <label for="Admin Username">Username</label>
+            <input type="text" id="username" name="username" required>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+            <button type="submit">Login</button>
+        </form>        
+    </div>
+</body>
+</html>

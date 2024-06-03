@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Page</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: linear-gradient(45deg, #3498db, #8e44ad);
+            overflow: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .registration-container {
+            position: relative;
+            width: 350px;
+            padding: 20px;
+            border-radius: 8px;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .logo {
+            position: absolute;
+            top: 7px;
+            left: 7px;
+            width: 90px; /* Adjusted size */
+            height: auto;
+            user-select: none;        
+        }
+
+        h2 {
+            margin-top: 10px;
+            color: #3498db;
+            padding-left: 65px; /* Add padding to the left side */
+        }
+
+
+        .registration-form label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .registration-form input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .registration-form button {
+            width: 100%;
+            padding: 12px;
+            background: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s ease-in-out;
+        }
+
+        .registration-form button:hover {
+            background: #2980b9; /* Hover background color */
+        }
+
+        .login-link {
+            margin-top: 20px;
+            color: #3498db; /* Button color */
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .login-link:hover {
+            color: #a93226; /* Maroon color on hover */
+        }
+
+        .account-statement {
+            margin-top: 20px;
+            font-weight: 600; /* Adjusted boldness */
+            color: #3498db; /* Button color */
+        }
+
+        .back-button {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            text-decoration: none;
+            color: #fff;
+            font-size: 20px;
+            font-weight: bold;
+            transition: color 0.3s ease-in-out;
+            display: flex;
+            align-items: center;
+        }
+
+        .back-button:hover {
+            color: #a93226; /* Maroon color on hover */
+        }
+
+        .back-button i {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <a href="homepage.php" class="back-button">&#8592; Back</a>
+    <div class="registration-container">
+        <img src="OES.png" alt="Logo" class="logo" id="logo">
+        <h2>Instructor Registration</h2>
+        <form class="registration-form" action="register_instructor.php" method="post">
+            <label for="full_name">Full Name</label>
+            <input type="text" id="full_name" name="fullname" required autocomplete="off">
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required autocomplete="off">
+
+            <label for="instructor-id">Instructor ID</label>
+            <input type="text" id="instructor-id" name="instructor-id" required autocomplete="off">
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required autocomplete="off">
+            
+            <label for="confirm-password">Confirm Password</label>
+            <input type="password" id="confirm-password" name="confirm-password" required autocomplete="off">
+
+            <button type="submit">Register</button>
+        </form>
+        <p class="account-statement">Already have an account? <a href="instructorlogin.html" class="login-link">Login here.</a></p>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</body>
+</html>

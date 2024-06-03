@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Examination System - Admin</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .container { margin-top: 20px; }
+        
+        .back-button {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            text-decoration: none;
+            color: rgb(138, 138, 230);
+            font-size: 20px;
+            font-weight: bold;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .back-button:hover {
+            color: #a93226;
+        }
+    </style>
+</head>
+<body>
+    <a href="homepage.php" class="back-button">&#8592; Back</a>
+    <div class="container">
+        <h1 class="text-center">Admin Dashboard - Online Examination System</h1>
+        <ul class="nav nav-tabs" id="adminTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="approve-requests-tab" data-toggle="tab" href="#approve-requests" role="tab" aria-controls="approve-requests" aria-selected="true">Approve Requests</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="add-student-tab" data-toggle="tab" href="#add-student" role="tab" aria-controls="add-student" aria-selected="false">Register Student</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="add-instructor-tab" data-toggle="tab" href="#add-instructor" role="tab" aria-controls="add-instructor" aria-selected="false">Register Instructor</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="update-results-tab" data-toggle="tab" href="#update-results" role="tab" aria-controls="update-results" aria-selected="false">Update Results</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="delete-entities-tab" data-toggle="tab" href="#delete-entities" role="tab" aria-controls="delete-entities" aria-selected="false">Delete Student/Instructor</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="notifications-tab" data-toggle="tab" href="#notifications" role="tab" aria-controls="notifications" aria-selected="false">Notifications</a>
+            </li>
+        </ul>
+        <div class="tab-content" id="adminTabContent">
+            <div class="tab-pane fade show active" id="approve-requests" role="tabpanel" aria-labelledby="approve-requests-tab">
+                <h3>Approve Registration Requests</h3>
+                <ul id="pendingRequestsList" class="list-group">
+                </ul>
+            </div>
+            <div class="tab-pane fade" id="add-student" role="tabpanel" aria-labelledby="add-student-tab">
+                <h3>Register Student</h3>
+                <form id="registerStudentForm">
+                    <div class="form-group">
+                        <label for="studentName">Student Name</label>
+                        <input type="text" class="form-control" id="studentName" name="name" placeholder="Enter student name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="studentEmail">Student Email</label>
+                        <input type="email" class="form-control" id="studentEmail" name="email" placeholder="Enter student email" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Register Student</button>
+                </form>
+            </div>
+            <div class="tab-pane fade" id="add-instructor" role="tabpanel" aria-labelledby="add-instructor-tab">
+                <h3>Register Instructor</h3>
+                <form id="registerInstructorForm">
+                    <div class="form-group">
+                        <label for="instructorName">Instructor Name</label>
+                        <input type="text" class="form-control" id="instructorName" name="name" placeholder="Enter instructor name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="instructorEmail">Instructor Email</label>
+                        <input type="email" class="form-control" id="instructorEmail" name="email" placeholder="Enter instructor email" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Register Instructor</button>
+                </form>
+            </div>
+            <div class="tab-pane fade" id="update-results" role="tabpanel" aria-labelledby="update-results-tab">
+                <h3>Update Results</h3>
+                <form id="updateResultsForm">
+                    <div class="form-group">
+                        <label for="studentID">Student ID</label>
+                        <input type="text" class="form-control" id="studentID" placeholder="Enter student ID" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="examResult">Exam Result</label>
+                        <input type="text" class="form-control" id="examResult" placeholder="Enter exam result" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Update Result</button>
+                </form>
+            </div>
+            <div class="tab-pane fade" id="delete-entities" role="tabpanel" aria-labelledby="delete-entities-tab">
+                <h3>Delete Student/Instructor</h3>
+                <form id="deleteEntityForm">
+                    <div class="form-group">
+                        <label for="entityID">Student/Instructor ID</label>
+                        <input type="text" class="form-control" id="entityID" placeholder="Enter ID" required>
+                    </div>
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+                <h3>All Entities</h3>
+                <ul id="entitiesList" class="list-group">
+                </ul>
+            </div>
+            <div class="tab-pane fade" id="notifications" role="tabpanel" aria-labelledby="notifications-tab">
+                <h3>Send Notification</h3>
+                <form id="sendNotificationForm">
+                    <div class="form-group">
+                        <label for="notificationMessage">Notification Message</label>
+                        <textarea class="form-control" id="notificationMessage" rows="3" placeholder="Enter notification message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-success">Send Notification</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Fetch pending requests for approval
+            fetchPendingRequests();
+
+            // Register student
+            $('#registerStudentForm').on('submit', function(e) {
+                e.preventDefault();
+                const name = $('#studentName').val();
+                const email = $('#studentEmail').val();
+                $.post('register_student.php', { name: name, email: email }, function(response) {
+                    alert(response);
+                    $('#registerStudentForm')[0].reset();
+                });
+            });
+
+            // Register instructor
+            $('#registerInstructorForm').on('submit', function(e) {
+                e.preventDefault();
+                const name = $('#instructorName').val();
+                const email = $('#instructorEmail').val();
+                $.post('register_instructor.php', { name: name, email: email }, function(response) {
+                    alert(response);
+                    $('#registerInstructorForm')[0].reset();
+                });
+            });
+
+            // Approve registration request
+            $('#pendingRequestsList').on('click', '.approve-request', function() {
+                const id = $(this).data('id');
+                $.post('approve_request.php', { id: id }, function(response) {
+                    alert(response);
+                    fetchPendingRequests();
+                });
+            });
+
+            // Update results
+            $('#updateResultsForm').on('submit', function(e) {
+                e.preventDefault();
+                const studentID = $('#studentID').val();
+                const examResult = $('#examResult').val();
+                $.post('update_results.php', { student_id: studentID, exam_result: examResult }, function(response) {
+                    alert(response);
+                    $('#updateResultsForm')[0].reset();
+                });
+            });
+
+            // Delete entity
+            $('#deleteEntityForm').on('submit', function(e) {
+                e.preventDefault();
+                const id = $('#entityID').val();
+                $.post('delete_entity.php', { id: id }, function(response) {
+                    alert(response);
+                    fetchEntities();
+                });
+            });
+
+            // Send notification
+            $('#sendNotificationForm').on('submit', function(e) {
+                e.preventDefault();
+                const message = $('#notificationMessage').val();
+                $.post('send_notification.php', { message: message }, function(response) {
+                    alert(response);
+                    $('#sendNotificationForm')[0].reset();
+                });
+            });
+
+            // Function to fetch pending requests
+            function fetchPendingRequests() {
+                $.get('fetch_pending_requests.php', function(data) {
+                    $('#pendingRequestsList').html(data);
+                });
+            }
+
+            // Function to fetch all entities
+            function fetchEntities() {
+                $.get('fetch_entities.php', function(data) {
+                    $('#entitiesList').html(data);
+                });
+            }
+
+            // Initial fetch of all entities
+            fetchEntities();
+        });
+    </script>
+</body>
+</html>
